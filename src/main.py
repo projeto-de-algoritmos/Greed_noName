@@ -38,7 +38,7 @@ if __name__ == '__main__':
             # script_select(earliest_deadline_first, list_process, minimizing_lateness_python, 'earliest_deadline_first')
             # seleciona_algoritmo(selection_sort, lista, minimizing_lateness_python, 'smallest_slack')
             # plot_grafico(minimizing_lateness_python, 'python')
-            clear()
+            # clear()
         elif execution == '6':
             print("Opcao 6 foi escolhida\n Finalizando execução!")
             time.sleep(1)

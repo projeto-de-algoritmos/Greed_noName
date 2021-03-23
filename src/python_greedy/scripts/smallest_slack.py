@@ -13,7 +13,7 @@ def shortest_processing_first(_list):
     average_waiting_time = 0
     average_turn_around_time = 0
     sorted_diff = []
-    
+
     for count in range(0, size_of_process):
         process_burst_list.append(random.randint(1, 20))
         sorted_deadline_list.append(random.randint(1,24))
