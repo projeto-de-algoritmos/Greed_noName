@@ -1,21 +1,24 @@
 from python_greedy.utils._insert import random_insert
 from python_greedy.view.menu import menu_choice
 from python_greedy.scripts.shortest_process import shortest_processing_first
+from python_greedy.scripts.earliest_deadline_first import earliest_deadline_first
+from python_greedy.scripts.smallest_slack import smallest_slack
 from python_greedy.utils.clear import clear
+from python_greedy.utils.generator import randomGenerator
 import time
 import random
 import pandas as pd
 import subprocess
 import os
 
-def script_select(script, _list, sort_time, script_name):
+def script_select(script, _list, costs, deadline, sort_time, script_name):
     for i in range(1000,11000, 1000):
         start_timestamp = time.time()
-        script(_list)
+        script(_list, costs, deadline)
         end_timestamp = time.time()
         timestamp = end_timestamp - start_timestamp
         sort_time[script_name][i] = timestamp
-        random_insert(_list, 100)
+        #random_insert(_list, 100)
 
 if __name__ == '__main__':
     execution = True
@@ -23,9 +26,16 @@ if __name__ == '__main__':
                   3000: 0, 4000: 0, 5000: 0, 6000: 0,
                   7000: 0, 8000: 0, 9000: 0, 10000: 0},
                   'earliest_deadline_first':{}, 'smallest_slack': {} }
-    # minimizing_lateness_python['earliest_deadline_first'].update(minimizing_lateness_python['shortest_processing_first'])
-    # minimizing_lateness_python['smallest_slack'].update(minimizing_lateness_python['shortest_processing_first'])
+    minimizing_lateness_python['earliest_deadline_first'].update(minimizing_lateness_python['shortest_processing_first'])
+    minimizing_lateness_python['smallest_slack'].update(minimizing_lateness_python['shortest_processing_first'])
     size_of_process = 1000
+    list_of_process = []
+    list_of_costs = []
+    list_of_deadline = []
+
+    list_of_process = randomGenerator(list_of_process, size_of_process)
+    list_of_costs = randomGenerator(list_of_costs, size_of_process)
+    list_of_deadline = randomGenerator(list_of_deadline, size_of_process)
 
     while execution:
         menu_choice()
@@ -33,10 +43,10 @@ if __name__ == '__main__':
         if choice == '1':
             clear()
             print("Opcao 1 foi escolhida\n")
-            list_process = random.sample(range(0, size_of_process * 2), size_of_process)
-            script_select(shortest_processing_first, list_process, minimizing_lateness_python, 'shortest_processing_first')
-            # script_select(earliest_deadline_first, list_process, minimizing_lateness_python, 'earliest_deadline_first')
-            # seleciona_algoritmo(selection_sort, lista, minimizing_lateness_python, 'smallest_slack')
+            # list_process = random.sample(range(0, size_of_process * 2), size_of_process)
+            script_select(shortest_processing_first, list_of_process, list_of_costs, list_of_deadline, minimizing_lateness_python, 'shortest_processing_first')
+            script_select(earliest_deadline_first, list_of_process, list_of_costs, list_of_deadline, minimizing_lateness_python, 'earliest_deadline_first')
+            script_select(smallest_slack, list_of_process, list_of_costs, list_of_deadline, minimizing_lateness_python, 'smallest_slack')
             # plot_grafico(minimizing_lateness_python, 'python')
             # clear()
         elif execution == '6':

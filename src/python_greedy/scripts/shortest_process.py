@@ -1,8 +1,9 @@
 import random
 from python_greedy.utils.sort_list import sort_list
 
-def shortest_processing_first(_list):
-    process_burst_list = []
+def shortest_processing_first(_list, costs, deadline):
+    process_burst_list = costs
+    deadline_list = deadline
     sorted_process_burst_list = []
     size_of_process = len(_list)
     waiting_time = []
@@ -10,18 +11,15 @@ def shortest_processing_first(_list):
     average_waiting_time = 0
     average_execution_time = 0
 
-    # o custo de cada processo será dado de forma randomica a fim de podermos ordernar
-    for count in range(0, size_of_process):
-        process_burst_list.append(random.randint(1, 20))
-    # bubble sort
     # retorna a lista de processos e custos de processos
     # ordenado de acordo com o custo
     sorted_process_list = sort_list(_list, process_burst_list)
+    print(size_of_process)
 
     waiting_time.insert(0, 0)
     execution_time.insert(0, process_burst_list[0])
 
-    for index in range(1,len(process_burst_list)):
+    for index in range(0,len(process_burst_list)):
         waiting_time.insert(index, waiting_time[index-1] + process_burst_list[index - 1])
         execution_time.insert(index, waiting_time[index] + process_burst_list[index])
         average_waiting_time += waiting_time[index]

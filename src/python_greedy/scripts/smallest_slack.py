@@ -1,29 +1,24 @@
 import random
-from python_greedy.utils.bubble_sort import bubble_sort
+from python_greedy.utils.sort_list import sort_list
 
-def shortest_processing_first(_list):
-    process_burst_list = []
+def smallest_slack(_list, costs, deadline):
+    process_burst_list = costs
     sorted_process_burst_list = []
-    deadline_list = []
+    deadline_list = deadline
     sorted_deadline_list = []
-    sorted_list = []
     size_of_process = len(_list)
     waiting_time = []
     turn_around_time =[]
     average_waiting_time = 0
     average_turn_around_time = 0
     sorted_diff = []
+    sorted_list = _list
 
-    for count in range(0, size_of_process):
-        process_burst_list.append(random.randint(1, 20))
-        sorted_deadline_list.append(random.randint(1,24))
+    sorted_process_burst_list = sort_list(_list, process_burst_list)
+    sorted_deadline_list = sort_list(_list, deadline_list)
 
-    sorted_list = bubble_sort(sorted_list, _list)
-    sorted_deadline_list = bubble_sort(sorted_deadline_list, _list)
-    sorted_process_burst_list = bubble_sort(sorted_process_burst_list, _list)
-
-    for i in range(1, len(size_of_process)):
-        sorted_diff[i] = sorted_process_burst_list[i] - sorted_deadline_list[i]
+    for i in range(0, size_of_process):
+        sorted_diff.append(sorted_process_burst_list[i] - sorted_deadline_list[i])
 
     waiting_time.insert(0, 0)
     turn_around_time.insert(0, sorted_process_burst_list[0])
