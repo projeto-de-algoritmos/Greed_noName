@@ -14,8 +14,8 @@ def smallest_slack(_list, costs, deadline):
     sorted_diff = []
     sorted_list = _list
 
-    sorted_process_burst_list = sort_list(_list, process_burst_list)
-    sorted_deadline_list = sort_list(_list, deadline_list)
+    sorted_process_burst_list = sort_list(sorted_list, process_burst_list)
+    sorted_deadline_list = sort_list(sorted_list, deadline_list)
 
     for i in range(0, size_of_process):
         sorted_diff.append(sorted_process_burst_list[i] - sorted_deadline_list[i])
@@ -32,10 +32,4 @@ def smallest_slack(_list, costs, deadline):
     average_waiting_time = float(average_waiting_time)/size_of_process
     average_turn_around_time = float(average_turn_around_time)/size_of_process
 
-    print("Process\t  Burst Time\t  Waiting Time\t  Turn Around Time")
-    for index in range(0, size_of_process):
-        print(str(sorted_list[index]) + "\t\t" + str(sorted_diff[index]) + "\t\t" + str(waiting_time[index])+ "\t\t" + str(turn_around_time[index]))
-        print("\n")
-
-    print("Average Waiting time is: "+str(average_waiting_time))
-    print("Average Turn Arount Time is: "+str(average_turn_around_time))
+    return sorted_list, sorted_diff, waiting_time, turn_around_time, average_waiting_time, average_turn_around_time
