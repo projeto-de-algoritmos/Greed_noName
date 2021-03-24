@@ -15,10 +15,12 @@ def smallest_slack(_list, costs, deadline):
     sorted_list = _list
 
     sorted_process_burst_list = sort_list(sorted_list, process_burst_list)
-    sorted_deadline_list = sort_list(sorted_list, deadline_list)
+    sorted_deadline_list = sort_list(sorted_process_burst_list, deadline_list)
 
     for i in range(0, size_of_process):
-        sorted_diff.append(sorted_process_burst_list[i] - sorted_deadline_list[i])
+        sorted_diff.append(sorted_deadline_list[i] - sorted_process_burst_list[i])
+
+    sorted_diff.sort(reverse=False)
 
     waiting_time.insert(0, 0)
     turn_around_time.insert(0, sorted_process_burst_list[0])
