@@ -29,8 +29,8 @@ def menu_choice():
 
 def sub_menu(_list, costs, deadline):
     sorted_process_list, process_burst_list, waiting_time, execution_time, average_waiting_time, average_execution_time = shortest_processing_first(_list, costs, deadline)
-    sorted_list_edf, sorted_deadline_list, waiting_time_edf, execution_time_edf, average_waiting_time_edf, average_execution_time_edf = shortest_processing_first(_list, costs, deadline)
-    sorted_list_sms, sorted_diff, waiting_time_sms, execution_time_sms, average_waiting_time_sms, average_execution_time_sms = shortest_processing_first(_list, costs, deadline)
+    sorted_list_edf, sorted_deadline_list, waiting_time_edf, execution_time_edf, average_waiting_time_edf, average_execution_time_edf = earliest_deadline_first(_list, costs, deadline)
+    sorted_list_sms, sorted_diff, waiting_time_sms, execution_time_sms, average_waiting_time_sms, average_execution_time_sms = smallest_slack(_list, costs, deadline)
 
     while True:
         show_menu()
