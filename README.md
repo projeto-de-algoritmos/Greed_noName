@@ -14,16 +14,21 @@
 O programa SchedulingCompare é uma ferramente criada com a intenção de mostrar claramente a diferença de tempo e falhas que os algoritmos de Scheduling possuem através de gráficos por tempo e mostrando o resultado no terminal
 
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+![Image1](./img/grafico.png)
+![Image2](./img/csv.png)
+![Image3](./img/printindividual.png)
 
 ## Instalação 
 **Linguagem**: Python<br>
 
-É necessário instalar a lib Panda:
+É necessário instalar as dependências:
 ```
-pip install pandas
+pip install -r requirements
 ```
-
+É necessário também instalar a dependência da biblioteca MatPlotLib:
+```
+sudo apt-get install python-tk
+```
 ## Uso 
 Para a execução do projeto digite no seu terminal:
 ```
@@ -37,7 +42,5 @@ Quando o programa abrir, escolha entre uma das opções dadas escrevendo seu nú
 4. Sair do Programa
 ```
 
-
-
-
-
+## Vídeo
+[<img src="https://img.youtube.com/vi/sVpizbVMxM0/sddefault.jpg">](https://youtu.be/sVpizbVMxM0)

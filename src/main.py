@@ -28,8 +28,8 @@ if __name__ == '__main__':
         'smallest_slack': {}
     }
 
-    # minimizing_lateness_python['earliest_deadline_first'].update(minimizing_lateness_python['shortest_processing_first'])
-    # minimizing_lateness_python['smallest_slack'].update(minimizing_lateness_python['shortest_processing_first'])
+    minimizing_lateness_python['earliest_deadline_first'].update(minimizing_lateness_python['shortest_processing_first'])
+    minimizing_lateness_python['smallest_slack'].update(minimizing_lateness_python['shortest_processing_first'])
     size_of_process = 1000
     list_of_process = []
     list_of_costs = []
