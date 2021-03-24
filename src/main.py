@@ -14,21 +14,22 @@ import os
 
 def script_select(script, _list, costs, deadline, sort_time, script_name):
     for i in range(1000,1000000, 1000):
-        start_timestamp = time.time()
+        start_timestamp = time.time_ns()
         script(_list, costs, deadline)
-        end_timestamp = time.time()
+        end_timestamp = time.time_ns()
         timestamp = end_timestamp - start_timestamp
         sort_time[script_name][i] = timestamp
-        #random_insert(_list, 100)
 
 if __name__ == '__main__':
     execution = True
-    minimizing_lateness_python = {'shortest_processing_first': {1000: 0, 2000: 0,
-                  3000: 0, 4000: 0, 5000: 0, 6000: 0,
-                  7000: 0, 8000: 0, 9000: 0, 10000: 0},
-                  'earliest_deadline_first':{}, 'smallest_slack': {} }
-    minimizing_lateness_python['earliest_deadline_first'].update(minimizing_lateness_python['shortest_processing_first'])
-    minimizing_lateness_python['smallest_slack'].update(minimizing_lateness_python['shortest_processing_first'])
+    minimizing_lateness_python = {
+        'shortest_processing_first': {},
+        'earliest_deadline_first':{},
+        'smallest_slack': {}
+    }
+
+    # minimizing_lateness_python['earliest_deadline_first'].update(minimizing_lateness_python['shortest_processing_first'])
+    # minimizing_lateness_python['smallest_slack'].update(minimizing_lateness_python['shortest_processing_first'])
     size_of_process = 1000
     list_of_process = []
     list_of_costs = []
@@ -46,7 +47,7 @@ if __name__ == '__main__':
             script_select(shortest_processing_first, list_of_process, list_of_costs, list_of_deadline, minimizing_lateness_python, 'shortest_processing_first')
             script_select(earliest_deadline_first, list_of_process, list_of_costs, list_of_deadline, minimizing_lateness_python, 'earliest_deadline_first')
             script_select(smallest_slack, list_of_process, list_of_costs, list_of_deadline, minimizing_lateness_python, 'smallest_slack')
-            plot_graph(minimizing_lateness_python, 'python')
+            plot_graph('results_python.csv')
         elif choice == '2':
             clear()
             print("Opcao 2 foi escolhida\n")
