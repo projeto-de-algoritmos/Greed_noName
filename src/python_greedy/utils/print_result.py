@@ -11,7 +11,6 @@ def print_result(
     average_waiting_time,
     average_execution_time):
 
-    print(f"{process_name}\t{cost}\t{waiting_time}\t{execution_time}")
     for index in range(0, size_process):
         print(
             str(sorted_list[index]) + "\t\t"
@@ -20,5 +19,6 @@ def print_result(
             + str(execution_time_list[index]))
         print("\n")
 
+    print(f"{process_name}\t\t{cost}\t{waiting_time}\t{execution_time}\n")
     print("Average Waiting time is: "+str(average_waiting_time))
     print("Average Execution Time is: "+str(average_execution_time))

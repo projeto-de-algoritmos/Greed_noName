@@ -3,7 +3,6 @@ from python_greedy.scripts.earliest_deadline_first import earliest_deadline_firs
 from python_greedy.scripts.smallest_slack import smallest_slack
 from python_greedy.utils.print_result import print_result
 from python_greedy.utils.clear import clear
-import pygame
 import time
 
 def show_menu():
